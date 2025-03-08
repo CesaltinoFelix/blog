@@ -6,22 +6,26 @@
             <h2 style="text-transform: uppercase; font-weight: bold;">Create Article</h2>
         </div>
         <div class="card-body p-5">
-            <form method="post" action="/articles/save">
+            <form method="post" action="/articles/update">
+                <input type="hidden" name="id" value="<%= article.id %>">
                 <div class="mb-4">
                     <label for="title" class="form-label fw-bold">Article Title</label>
-                    <input type="text" id="title" class="form-control form-control-lg" name="title" placeholder="Enter article title" required>
+                    <input type="text" id="title" class="form-control form-control-lg" name="title" value="<%= article.title %>" placeholder="Enter article title" required>
                 </div>
                 <div class="mb-4">
                     <label for="title" class="form-label fw-bold">Article Category</label>
                     <select name="categoryId" class="form-control form-control-lg" id="">
-                        <% categories.forEach(category => {%>
+                        <% categories.forEach(category => {
+                            if(article.CategoryId == category.id){%>
+                            <option selected value="<%= category.id %>"><%= category.title %></option>
+                            <%}else{%>
                             <option value="<%= category.id %>"><%= category.title %></option>
-                        <%}); %>
+                        <%}}); %>
                     </select>
                 </div>
                 <div class="mb-4">
                     <label for="title" class="form-label fw-bold">Body</label>
-                    <textarea id="body" class="form-control form-control-lg" name="body" placeholder="Enter article body" required> </textarea>
+                    <textarea id="body"  class="form-control form-control-lg" name="body" placeholder="Enter article body" required> <%= article.body %> </textarea>
                 </div>
                 <div class="text-center">
                     <button class="btn btn-success btn-lg px-5">Create</button>

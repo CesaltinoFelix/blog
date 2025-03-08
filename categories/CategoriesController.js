@@ -70,11 +70,9 @@ router.get("/admin/categories/edit/:id", (req, res)=>{
     if(isNaN(id))
         res.redirect('/admin/categories')
     Category.findByPk(id).then((category)=>{
-        console.log(category)
         if(category != undefined)
-        {
             res.render("admin/categories/edit", {category})
-        }else
+        else
         res.redirect('/admin/categories')
     }).catch((err)=>{
         res.redirect('/admin/categories')
