@@ -1,0 +1,50 @@
+<%- include('../../partials/header.ejs') %>
+<%- include('../../partials/navbar.ejs') %>
+<div class="container">
+    <div class="card mt-5 shadow-lg rounded-4">
+        <div class="card-header bg-primary text-white text-center">
+            <h2 style="text-transform: uppercase; font-weight: bold;">Create Article</h2>
+        </div>
+        <div class="card-body p-5">
+            <form method="post" action="/categories/save">
+                <div class="mb-4">
+                    <label for="title" class="form-label fw-bold">Article Title</label>
+                    <input type="text" id="title" class="form-control form-control-lg" name="title" placeholder="Enter article title" required>
+                </div>
+                <div class="mb-4">
+                    <label for="title" class="form-label fw-bold">Body</label>
+                    <textarea id="body" class="form-control form-control-lg" name="body" placeholder="Enter article body" required> </textarea>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-success btn-lg px-5">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('../../partials/footer.ejs') %>
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        //essa opcao muda o idioma para portugues de portugal
+        // language: 'pt_PT',
+        selector: "#body", 
+        plugins: [
+            'advlist',
+            'autolink',
+            'link',
+            'image',
+            'lists',
+            'preview',
+            'searchreplace',
+            'wordcount',
+            'fullscreen',
+            'insertdatetime',
+            'media',
+            'save',
+            'table',
+            'emoticons',
+        ],
+        license_key: 'gpl'
+    });
+</script>
