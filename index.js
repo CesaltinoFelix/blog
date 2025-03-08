@@ -36,9 +36,25 @@ connection.authenticate()
 // Routes
 app.use("/", CategoriesController)
 app.use("/", ArticlesController)
-app.get('/', (req, res) => {
-  res.render('index');
-});
+
+app.get("/", async(req, res)=>{
+  const articles = await Article.findAll({
+      include:[{model: Category}]
+  })
+  res.render("index", {articles})
+})
+
+app.get("/articles/:slug", async(req, res)=>{
+  const slug = req.params.slug
+  const article = await Article.findOne({
+      include:[{model: Category}],
+      where:{
+        slug
+      }
+  })
+  console.log(article)
+  res.render("article_read", {article})
+})
 
 // Start server
 app.listen(port, (err) => {

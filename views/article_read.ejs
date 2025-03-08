@@ -1,0 +1,13 @@
+<%- include('./partials/header.ejs') %>
+<%- include('./partials/navbar.ejs') %>
+<div class="container mt-5">
+    <h4 class="text-center mb-4">📝 <%= article.title %></h4>
+    <div class="text-muted text-center mb-4">Category: <%= article.Category.title %> | Published on: <%= article.createdAt.toLocaleDateString() %></div>
+    <div class="article-content">
+        <%- article.body %>
+    </div>
+    <div class="text-center mt-5">
+        <a href="/" class="btn btn-secondary">⬅️ Back to Articles</a>
+    </div>
+</div>
+<%- include('./partials/footer.ejs') %>
