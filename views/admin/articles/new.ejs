@@ -12,6 +12,14 @@
                     <input type="text" id="title" class="form-control form-control-lg" name="title" placeholder="Enter article title" required>
                 </div>
                 <div class="mb-4">
+                    <label for="title" class="form-label fw-bold">Article Category</label>
+                    <select name="category" class="form-control form-control-lg" id="">
+                        <% categories.forEach(category => {%>
+                            <option value="<%= category.id %>"><%= category.title %></option>
+                        <%}); %>
+                    </select>
+                </div>
+                <div class="mb-4">
                     <label for="title" class="form-label fw-bold">Body</label>
                     <textarea id="body" class="form-control form-control-lg" name="body" placeholder="Enter article body" required> </textarea>
                 </div>
