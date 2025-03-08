@@ -1,5 +1,21 @@
-<nav class="navbar navbar-light bg-primary">
-    <a href="/" class="navbar-brand">
-        <img width="35" src="/img/logo.png" alt="">
-    </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-primary shadow-sm">
+    <div class="container-fluid">
+        <a href="/" class="navbar-brand text-white fw-bold">
+            <img width="35" src="/img/logo.png" alt="Logo" class="me-2">
+            MyApp
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse show" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/admin/categories">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/admin/articles">Articles</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </nav>

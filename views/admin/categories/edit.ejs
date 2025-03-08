@@ -3,16 +3,17 @@
 <div class="container">
     <div class="card mt-5 shadow-lg rounded-4">
         <div class="card-header bg-primary text-white text-center">
-            <h2 style="text-transform: uppercase; font-weight: bold;">Create Category</h2>
+            <h2 style="text-transform: uppercase; font-weight: bold;">Edit Category</h2>
         </div>
         <div class="card-body p-5">
-            <form method="post" action="/categories/save">
+            <form method="post" action="/categories/update">
+                <input type="hidden" name="id" value="<%= category.id %>">
                 <div class="mb-4">
                     <label for="title" class="form-label fw-bold">Category Title</label>
-                    <input type="text" id="title" class="form-control form-control-lg" name="title" placeholder="Enter category title" required>
+                    <input type="text" id="title" class="form-control form-control-lg" name="title" value="<%= category.title %>" placeholder="Enter category title" required>
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-success btn-lg px-5">Create</button>
+                    <button class="btn btn-success btn-lg px-5">Update</button>
                 </div>
             </form>
         </div>

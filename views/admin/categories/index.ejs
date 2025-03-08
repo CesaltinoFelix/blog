@@ -1,20 +1,40 @@
 <%- include('../../partials/header.ejs') %>
 <%- include('../../partials/navbar.ejs') %>
 <div class="container">
-    <h4 class="mt-4 mb-4">Categorias</h4>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-      </tr>
-  </tbody>
-</table>
+    <h4 class="mt-4 text-center">Categories Management</h4>
+    <a href="/admin/categories/new" class="btn btn-primary mb-4">➕ Create New Category</a>
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Slug</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% categories.forEach(category => { %>
+                <tr>
+                    <th scope="row"><%= category.id %></th>
+                    <td><%= category.title %></td>
+                    <td><%= category.slug %></td>
+                    <td>
+                        <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-warning btn-sm">✏️ Edit</a>
+                        <form action="/categories/delete" method="post" onsubmit="confirmDelete(event, this)" style="display: inline;">
+                            <input type="hidden" name="id" value="<%= category.id %>">
+                            <button class="btn btn-danger btn-sm">🗑️ Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
 </div>
 <%- include('../../partials/footer.ejs') %>
+<script>
+    function confirmDelete(event, form) {
+        event.preventDefault();
+        const res = confirm("Are you sure you want to delete this category?");
+        if (res) form.submit();
+    }
+</script>
