@@ -77,4 +77,28 @@ router.get("/admin/articles/edit/:id", async(req, res)=>{
 
 })
 
+router.post("/articles/update", (req, res)=>{
+    const {title, body, categoryId, id} = req.body
+    if(isNaN(id))
+        res.redirect('/admin/articles')
+    if((title != undefined) && (id != undefined))
+    {
+        Article.update({
+            title,
+            body,
+            slug: slugify(title),
+            CategoryId: categoryId
+        }, 
+        {
+            where: {
+                id: id
+            }
+        }
+    ).then(()=>{
+            res.redirect('/admin/articles')
+        })
+    }else
+    res.redirect('admin/articles')
+})
+
 module.exports = router
